@@ -1,0 +1,26 @@
+<header>
+  <div class="header-container">
+    <a href="/">
+      <h1 class="logo">Music Shop🎸</h1>
+    </a>
+    <a href="/cart" class="cart-link">Cart (3)</a>
+  </div>
+</header>
+<main>
+  <h2>Items for Sale</h2>
+  <section id="saleItems">
+{{#each inventory}}
+    <a href="/product/{{this.id}}" class="sale-item">
+      <div class="item-img-container">
+        <img src="{{this.image}}" alt="{{this.name}}" />
+        <p>{{this.description}}</p>
+      </div>
+<p>{{this.name}}</p>
+      <p>${{this.price}}</p>
+    </a>
+{{/each}}
+  </section>
+</main>
+<footer>
+  <p>&copy; Music Shop</p>
+</footer>

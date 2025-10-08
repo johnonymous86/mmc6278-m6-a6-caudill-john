@@ -1,13 +1,24 @@
 const express = require('express')
+const path = require('path') 
 const apiRoutes = require('./routes/api-routes')
 const htmlRoutes = require('./routes/html-routes')
 const app = express()
-// TODO: Require Exphbs
+const exphbs = require('express-handlebars')
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-// TODO: Add the handlebars setup code
+
+const hbs = exphbs.create({
+    
+    defaultLayout: 'main', 
+    layoutsDir: path.join(__dirname, 'views/layouts'),
+    
+    partialsDir: path.join(__dirname, 'views/partials')
+});
+
+app.engine('handlebars', hbs.engine) 
+app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
 
